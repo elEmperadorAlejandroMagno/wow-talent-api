@@ -5,14 +5,18 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 const DATA_FILE = path.join(__dirname, 'data.json');
 
 // Configuración: tiempo de vida de los registros en milisegundos (2 horas)
 const RECORD_LIFETIME = 2 * 60 * 60 * 1000; // 2 horas
 
 // Middleware
-app.use(cors()); // Permitir requests desde React
+app.use(cors({
+    origin: process.env.ALLOWED_ORIGIN,
+    methods: ['GET', 'POST'],
+    credentials: false
+})); // Permitir requests desde React
 app.use(express.json());
 
 // Funciones auxiliares para manejo del archivo JSON
@@ -182,40 +186,6 @@ app.post('/api/data', (req, res) => {
         res.status(500).json({
             success: false,
             error: 'Error procesando build',
-            message: error.message
-        });
-    }
-});
-
-// Ruta adicional para obtener estadísticas
-app.get('/api/stats', (req, res) => {
-    try {
-        const data = readData();
-        const now = Date.now();
-        const dataArray = Object.values(data);
-        
-        const stats = {
-            total: dataArray.length,
-            active: dataArray.filter(record => {
-                const recordAge = now - record.createdAt;
-                return recordAge < RECORD_LIFETIME;
-            }).length,
-            expiringSoon: dataArray.filter(record => {
-                const timeLeft = record.expiresAt - now;
-                return timeLeft < (30 * 60 * 1000) && timeLeft > 0; // Expiran en menos de 30 minutos
-            }).length,
-            recordLifetime: '2 horas',
-            nextCleanup: new Date(now + (30 * 60 * 1000)).toISOString()
-        };
-        
-        res.json({
-            success: true,
-            stats: stats
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: 'Error obteniendo estadísticas',
             message: error.message
         });
     }

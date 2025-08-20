@@ -1,0 +1,36 @@
+{
+  "fd2c334f-01d1-494b-ba48-af43e54da418": {
+    "name": "Warrior Build",
+    "className": "Warrior",
+    "assignedPoints": {
+      "arms": 31,
+      "fury": 20,
+      "protection": 0
+    },
+    "totalPoints": 51,
+    "availablePoints": 0,
+    "id": "fd2c334f-01d1-494b-ba48-af43e54da418",
+    "originalId": "temp_1724188562000",
+    "timestamp": "2025-08-20T20:37:19.030Z",
+    "createdAt": 1755722239030,
+    "expiresAt": 1755729439030,
+    "buildType": "wow-talent-build"
+  },
+  "8dbdcc27-e1a3-465c-aa3d-e02e6763fe7f": {
+    "name": "Mage Build",
+    "className": "Mage",
+    "assignedPoints": {
+      "arcane": 21,
+      "fire": 30,
+      "frost": 0
+    },
+    "totalPoints": 51,
+    "availablePoints": 0,
+    "id": "8dbdcc27-e1a3-465c-aa3d-e02e6763fe7f",
+    "originalId": "temp_1724188800000",
+    "timestamp": "2025-08-20T20:42:17.470Z",
+    "createdAt": 1755722537470,
+    "expiresAt": 1755729737470,
+    "buildType": "wow-talent-build"
+  }
+}

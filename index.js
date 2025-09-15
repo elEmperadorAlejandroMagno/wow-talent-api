@@ -6,7 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const PORT = process.env.PORT || 3005;
-const DATA_FILE = path.join(__dirname, 'data.json');
+const DATA_FILE = path.join(__dirname, '/data/data.json');
 
 // Configuración: tiempo de vida de los registros en milisegundos (2 horas)
 const RECORD_LIFETIME = 2 * 60 * 60 * 1000; // 2 horas

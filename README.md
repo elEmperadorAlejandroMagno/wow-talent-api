@@ -9,7 +9,7 @@ npm install
 npm start
 ```
 
-El servidor se ejecutará en `http://localhost:3000`
+El servidor se ejecutará en `http://localhost:3005`
 
 ## 📖 Endpoints
 
@@ -98,28 +98,6 @@ curl http://localhost:3000/api/data
     }
   ],
   "count": 1
-}
-```
-
-### GET /api/stats
-Obtiene estadísticas del sistema.
-
-**Request:**
-```bash
-curl http://localhost:3000/api/stats
-```
-
-**Response:**
-```json
-{
-  "success": true,
-  "stats": {
-    "total": 5,
-    "active": 5,
-    "expiringSoon": 1,
-    "recordLifetime": "2 horas",
-    "nextCleanup": "2024-01-20T16:00:00.000Z"
-  }
 }
 ```
 
